@@ -1,0 +1,7 @@
+sentence    :=  vp | np vp | aux np vp | np singular-vp | singular-aux np vp | pronoun-singular singular-vp | pronoun-plural vp | aux pronoun-plural vp | singular-aux pronoun-singular vp;
+np          :=  proper-noun | det nominal | nominal;
+nominal     :=  noun | nominal noun | nominal pp | nominal pp pp | nominal rel-clause;
+vp          :=  verb | verb np | verb np pp | verb pp | verb inf-marker vp | verb pronoun-accusative | verb pronoun-accusative pp;
+singular-vp :=  singular-verb | singular-verb np | singular-verb np pp | singular-verb pp | singular-verb inf-marker vp | singular-verb pronoun-accusative | singular-verb pronoun-accusative pp;
+rel-clause  :=  rel-pro vp | rel-pro singular-vp;
+pp          :=  prep np | prep pronoun-accusative;

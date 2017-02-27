@@ -1,0 +1,148 @@
+(1)
+
+(a)
+W = [woof, meow, squeak].
+V1 = [1, 1, 0].
+V2 = [1, 0, 1].
+
+cosine similarity = 1/sqrt(2)*sqrt(2) = 1/2
+
+(b)
+With weight,
+
+weight of woof = 0
+weight of meow = log2
+weight of squeak = log2
+
+W1 = [0, log2, 0]
+W2 = [0, 0, log2]
+
+cosine similarity = 0 / log2*log2 = 0
+
+(c)
+After we add a new document D3 = [meow, squeak], the size of collection N = 3
+
+weight of woof = log1.5
+weight of meow = log1.5
+weight of squeak = log1.5
+
+
+cosine similarity = log1.5^2/log1.5*sqrt(2)*sqrt(2)*log1.5 = 1/2
+
+
+(2)
+
+6.1
+
+P(-)*P(S|-) = 0.16 * 0.06 * 0.06 * 0.15 * 0.11 = 9.50 * 10^-6
+P(+)*P(S|+) = 0.09 * 0.07 * 0.29 * 0.04 * 0.08 = 5.85 * 10^-6
+
+So this sentence is assigned to negative class.
+
+6.2
+
+D = [fast, couple, shoot, fly]
+P(comedy) = 3 / 7
+P(action) = 4 / 7
+
+P(fast|comedy) = 2 / 3 
+P(couple|comedy) = 3 / 3
+P(shoot|comedy) = 1 / 3
+P(fly|comedy) = 2 / 3
+
+P(comedy|D) = P(comedy)^4 * P(comedy|fast)*P(comedy|couple)*P(comedy|shoot)*P(comedy|fly) = 3/7 * 2/3 * 3/7 * 3/3 * 3/7 * 1/3 * 3/7 * 2/3 = 12/49
+
+P(fast|action) = 3 / 4 
+P(couple|action) = 1 / 4
+P(shoot|action) = 4 / 4
+P(fly|action) = 2 / 4
+
+P(action|D) = P(action)^4 * P(action|fast)*P(action|couple)*P(action|shoot)*P(action|fly) = 4/7 * 3/4 * 4/7 * 1/4 * 4/7 * 4/4 * 4/7 * 2/4 = 24/49
+
+P(action|D) > P(comedy|D), so assign document D to action genre.
+
+
+(3)
+
+Sentence:                               my cat build buildings
+Seeking sentence                        +
+Seeking np                              +
+Seeking n                               +
+Seeking art                             +
+Found   art = my                        ===
+Seeking n                                  +
+Found   n = cat                            ====
+Found   np = my cat                     =======
+Seeking vp                                     +
+Seeking v                                      +
+Found   v = build                              ======
+Found   vp = build                             ======
+Found   sentence = my cat build         =============
+Seeking v                                      +
+Found   v = build                              ======
+Seeking np                                           +
+Seeking n                                            +
+Found   n = buildings                                =========
+Found   np = buildings                               =========
+Found   vp = build buildings                   ===============
+Found   sentence = my cat build buildings
+                                        ======================
+Sentence parsed.
+Seeking art                                          +
+Seeking art                                          +
+Seeking art                             +
+Found   art = my                        ===
+Seeking adj                                +
+1 parse(s) obtained
+Parse:
+sentence
+    np
+        art = my 
+        n = cat 
+    vp
+        v = build 
+        np
+            n = buildings
+---------
+Sentence:                               the old cat chases mice
+Seeking sentence                        +
+Seeking np                              +
+Seeking n                               +
+Seeking art                             +
+Found   art = the                       ====
+Seeking n                                   +
+Seeking art                             +
+Found   art = the                       ====
+Seeking adj                                 +
+Found   adj = old                           ====
+Seeking n                                       +
+Found   n = cat                                 ====
+Found   np = the old cat                ============
+Seeking vp                                          +
+Seeking v                                           +
+Found   v = chases                                  =======
+Found   vp = chases                                 =======
+Found   sentence = the old cat chases   ===================
+Seeking v                                           +
+Found   v = chases                                  =======
+Seeking np                                                 +
+Seeking n                                                  +
+Found   n = mice                                           ====
+Found   np = mice                                          ====
+Found   vp = chases mice                            ===========
+Found   sentence = the old cat chases mice
+                                        =======================
+Sentence parsed.
+Seeking art                                                +
+Seeking art                                                +
+1 parse(s) obtained
+Parse:
+sentence
+    np
+        art = the 
+        adj = old 
+        n = cat 
+    vp
+        v = chases 
+        np
+            n = mice

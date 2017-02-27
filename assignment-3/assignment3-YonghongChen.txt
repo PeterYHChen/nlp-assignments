@@ -1,0 +1,101 @@
+1. HMM
+
+a) What is the probability of emitting this sentence 'moo hello quack' from this state sequence? 
+
+Answer:
+
+Emission probability:
+
+P(moo | Cow) = 0.9
+P(hello | Cow) = 0.1
+
+P(quack | Duck) = 0.6
+P(moo | Duck) = 0.4
+
+Token 1: moo
+
+viterbi[moo, 1] = viterbi[start, 0] * P(Cow | start) * P (moo | Cow) = 1 * 1 * 0.9 = 0.9
+
+        0     1     2     3     4
+
+start   1     0     0     0     0
+Cow     0    0.9
+Duck    0     0
+end     0     0
+
+
+Token 2: hello
+
+cow-viterbi[hello, 2]  = viterbi[Cow, 1] * P(Cow | Cow) * P (hello | Cow) = 0.9 * 0.5 * 0.1 = 0.045
+duck-viterbi[hello, 2] = viterbi[Cow, 1] * P(Duck | Cow) * P (hello | Duck) = 0.9 * 0.3 * 0.4 = 0.108
+
+        0     1     2     3     4
+
+start   1     0     0     0     0
+Cow     0    0.9  0.045
+Duck    0     0   0.108
+end     0     0     0
+
+
+Token 3: quack
+cow-viterbi[hello, 2] * P(Duck | Cow) * P (quack | Duck) = 0.045 * 0.3 * 0.6 = 0.0081
+duck-viterbi[hello, 2] * P(Duck | Duck) * P (quack | Duck) = 0.108 * 0.5 * 0.6 = 0.0324
+
+viterbi[quack, 3] = max{0.0081, 0.0324} = 0.0324
+
+        0      1      2      3      4
+
+start   1      0      0      0      0
+Cow     0     0.9   0.045    0      0
+Duck    0      0    0.108  0.0324   0
+end     0      0      0      0      
+
+
+Token 4: end
+
+viterbi[end, 4] = viterbi[quack, 3] * P(end | Duck) = 0.0324 * 0.2 = 0.00648
+
+        0      1      2      3      4
+
+start   1      0      0      0      0
+Cow     0     0.9   0.045    0      0
+Duck    0      0    0.108  0.0324   0
+end     0      0      0      0   0.00648
+
+The final sequence is start -> Cow -> Duck -> Duck -> end.
+
+
+b) Is there another state sequence which also generates 'moo hello quack'?  What is the total probability of emitting this sentence?
+
+Answer:
+
+Another state sequence that generates 'moo hello quack' is start -> Cow -> Cow -> Duck -> end.
+In this state sequence, viterbi[quack, 3] = 0.0081 viterbi[end, 4] = 0.0081*0.2 = 0.00162
+Total probability = 0.00648 + 0.00162 = 0.0081
+
+2.
+
+Sentence:                               I like cats.
+Annotate I == <constit cat="PRP">
+Annotate like == <constit cat="VBP">
+Annotate cats == <constit cat="NNS">
+Annotate . == <constit cat=".">
+
+Sentence:                               I like cloud.
+Annotate I == <constit cat="PRP">
+Annotate like == <constit cat="IN">
+Annotate cloud == <constit cat="NN">
+Annotate . == <constit cat=".">
+
+
+P(VBP | PRP) * P(like | VBP) = 3659/20819 * 25/14955 = 0.000294
+P(NN | VBP) * P(cloud | NN) = 447/14955 * 5/159394 = 0.000000938
+
+P(IN | PRP) * P(like | IN) = 735/20819 * 475/118291 = 0.000142
+P(NN | IN) * P(cloud | NN) = 12815/118291 * 5/159394 = 0.00000340
+
+
+P(VBP | PRP) * P(like | VBP) * P(NN | VBP) * P(cloud | NN)  = 2.76 * 10^-10
+P(IN | PRP) * P(NN | IN) = 0.035 * 0.108 = 0.00378 = 4.83 * 10^-10
+
+The latter is bigger in probability and causes the error. The reason for this error is because P(NN | IN) is much higher than P(NN | VBP).

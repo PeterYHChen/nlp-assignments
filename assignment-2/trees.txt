@@ -1,0 +1,41 @@
+a) Show the airlines with flights to Boston.
+ 
+[VP [Verb “show”]
+    [NP [Det "the"]
+        [Nominal  [Nominal [Noun "airlines"]]
+                  [PP [Prep "with”]
+                      [NP [Nominal [Noun "flights"]]
+                          [PP [Preposition "to"]
+                              [NP [Proper-Noun "Boston"]]]]]]]]
+ 
+b) Show the airlines that fly to Boston.
+ 
+[VP [Verb “show”]
+    [NP [Det "the"]
+        [Nominal  [Nominal [Noun "airlines"]]
+                  [Rel-clause   [Rel-pro "that”]
+                                [VP [Verb "fly"]
+                                    [PP [Prep "to"]
+                                        [NP [Proper-Noun "Boston"]]]]]]]]
+ 
+c) I need to know the flight number.
+ 
+[Sentence
+    [NP [Pronoun "I"]]
+    [VP [Verb "need"]
+        [Inf-maker "to"]   
+        [VP  [Verb "know"]
+             [NP  [Det "the"]
+                  [Nominal  [Nominal [Noun "flight"]]
+                            [Noun "number"]]]]]]
+ 
+d) Do you prefer to go to Boston?
+  
+[Sentence
+    [Aux "Do"]
+    [NP [Pronoun "you"]
+    [VP [Verb "prefer"]
+        [Inf-maker "to"]   
+        [VP  [Verb "go"]
+             [PP  [Prep "to"]
+                  [NP [Proper-Noun "Boston"]]]]]]
