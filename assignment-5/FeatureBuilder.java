@@ -28,8 +28,9 @@ public class FeatureBuilder {
         List<String> sentence = new ArrayList<>();
         List<String> results = new ArrayList<>();
 
+        System.out.println("Processing file " + targetFilePath);
         for (int i = 0; i < lines.size(); i++) {
-            System.out.println("Processing line " + i);
+//            System.out.println("Processing line " + i);
             String word = lines.get(i).trim();
             if (word.equals("")) {
                 // process sentence and get features
@@ -49,7 +50,8 @@ public class FeatureBuilder {
         // print results to file
         PrintWriter pw = null;
         try {
-            pw = new PrintWriter(new FileWriter("feature-enhanced", false));
+            targetFilePath = targetFilePath.substring(0, targetFilePath.indexOf("."));
+            pw = new PrintWriter(new FileWriter(targetFilePath + ".enhanced", false));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,9 +92,9 @@ public class FeatureBuilder {
             features.append("\tposTag=" + posTags.get(i));
 
             if (i > 0) {
-                features.append("\tpreToken=" + tokens.get(i-1));
-                features.append("\tprePosTag=" + posTags.get(i-1));
-                features.append("\tpreChunkTag=" + (training? chunkTags.get(i-1):"@@"));
+//                features.append("\tpreToken=" + tokens.get(i-1));
+//                features.append("\tprePosTag=" + posTags.get(i-1));
+//                features.append("\tpreChunkTag=" + (training? chunkTags.get(i-1):"@@"));
             }
             if (i < tokens.size() - 1) {
                 features.append("\tnextToken=" + tokens.get(i+1));
@@ -100,8 +102,8 @@ public class FeatureBuilder {
             }
 
             if (training) {
-                if (i < chunkTags.size() - 1)
-                    features.append("\tnextChunkTag=" + (chunkTags.get(i+1)));
+//                if (i < chunkTags.size() - 1)
+//                    features.append("\tnextChunkTag=" + (chunkTags.get(i+1)));
 
                 features.append("\t" + chunkTags.get(i));
             }
