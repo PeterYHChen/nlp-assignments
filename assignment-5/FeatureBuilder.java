@@ -92,9 +92,9 @@ public class FeatureBuilder {
             features.append("\tposTag=" + posTags.get(i));
 
             if (i > 0) {
-//                features.append("\tpreToken=" + tokens.get(i-1));
-//                features.append("\tprePosTag=" + posTags.get(i-1));
-//                features.append("\tpreChunkTag=" + (training? chunkTags.get(i-1):"@@"));
+                features.append("\tpreToken=" + tokens.get(i-1));
+                features.append("\tprePosTag=" + posTags.get(i-1));
+                features.append("\tpreChunkTag=" + (training? chunkTags.get(i-1):"@@"));
             }
             if (i < tokens.size() - 1) {
                 features.append("\tnextToken=" + tokens.get(i+1));
@@ -102,8 +102,8 @@ public class FeatureBuilder {
             }
 
             if (training) {
-//                if (i < chunkTags.size() - 1)
-//                    features.append("\tnextChunkTag=" + (chunkTags.get(i+1)));
+                if (i < chunkTags.size() - 1)
+                    features.append("\tnextChunkTag=" + (chunkTags.get(i+1)));
 
                 features.append("\t" + chunkTags.get(i));
             }
