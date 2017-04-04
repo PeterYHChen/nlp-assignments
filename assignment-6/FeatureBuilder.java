@@ -14,7 +14,7 @@ import java.util.Map;
 public class FeatureBuilder {
     public static void main (String[] args) throws IOException {
         if (args.length != 1) {
-            System.err.println("PosTagger takes 1 arguments:  java FeatureBuilder training.pos-chunk");
+            System.err.println("PosTagger takes 1 arguments:  java FeatureBuilder training.pos-chunk-name");
             System.exit(1);
         }
 
@@ -68,16 +68,18 @@ public class FeatureBuilder {
         List<String> tokens = new ArrayList<>();
         List<String> posTags = new ArrayList<>();
         List<String> chunkTags = new ArrayList<>();
+        List<String> nameTags = new ArrayList<>();
 
         boolean training = false;
         for (int i = 0; i < sentence.size(); i++) {
             String[] fields = sentence.get(i).split("\t");
-            if (fields.length >= 2) {
+            if (fields.length >= 3) {
                 tokens.add(fields[0]);
                 posTags.add(fields[1]);
-                if (fields.length > 2) {
+                chunkTags.add(fields[2]);
+                if (fields.length > 3) {
                     training = true;
-                    chunkTags.add(fields[2]);
+                    nameTags.add(fields[3]);
                 }
             }
             else {
@@ -90,22 +92,25 @@ public class FeatureBuilder {
             StringBuffer features = new StringBuffer();
             features.append(tokens.get(i));
             features.append("\tposTag=" + posTags.get(i));
+            features.append("\tchunkTag=" + chunkTags.get(i));
 
             if (i > 0) {
                 features.append("\tpreToken=" + tokens.get(i-1));
                 features.append("\tprePosTag=" + posTags.get(i-1));
-                features.append("\tpreChunkTag=" + (training? chunkTags.get(i-1):"@@"));
+                features.append("\tpreChunkTag=" + chunkTags.get(i-1));
+                features.append("\tpreNameTag=" + (training? nameTags.get(i-1):"@@"));
             }
             if (i < tokens.size() - 1) {
                 features.append("\tnextToken=" + tokens.get(i+1));
                 features.append("\tnextPosTag=" + posTags.get(i+1));
+                features.append("\tnextChunkTag=" + chunkTags.get(i+1));
             }
 
             if (training) {
-                if (i < chunkTags.size() - 1)
-                    features.append("\tnextChunkTag=" + (chunkTags.get(i+1)));
+                if (i < nameTags.size() - 1)
+                    features.append("\tnextNameTag=" + (nameTags.get(i+1)));
 
-                features.append("\t" + chunkTags.get(i));
+                features.append("\t" + nameTags.get(i));
             }
 
             results.add(features.toString());
