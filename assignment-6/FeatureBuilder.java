@@ -92,23 +92,24 @@ public class FeatureBuilder {
             StringBuffer features = new StringBuffer();
             features.append(tokens.get(i));
             features.append("\tposTag=" + posTags.get(i));
-            features.append("\tchunkTag=" + chunkTags.get(i));
+//            features.append("\tchunkTag=" + chunkTags.get(i));
 
             if (i > 0) {
                 features.append("\tpreToken=" + tokens.get(i-1));
                 features.append("\tprePosTag=" + posTags.get(i-1));
-                features.append("\tpreChunkTag=" + chunkTags.get(i-1));
-                features.append("\tpreNameTag=" + (training? nameTags.get(i-1):"@@"));
+//                features.append("\tpreChunkTag=" + chunkTags.get(i-1));
+
+//                features.append("\tpreNameTag=" + (training? nameTags.get(i-1):"@@"));
             }
             if (i < tokens.size() - 1) {
                 features.append("\tnextToken=" + tokens.get(i+1));
                 features.append("\tnextPosTag=" + posTags.get(i+1));
-                features.append("\tnextChunkTag=" + chunkTags.get(i+1));
+//                features.append("\tnextChunkTag=" + chunkTags.get(i+1));
             }
 
             if (training) {
-                if (i < nameTags.size() - 1)
-                    features.append("\tnextNameTag=" + (nameTags.get(i+1)));
+//                if (i < nameTags.size() - 1)
+//                    features.append("\tnextNameTag=" + (nameTags.get(i+1)));
 
                 features.append("\t" + nameTags.get(i));
             }
