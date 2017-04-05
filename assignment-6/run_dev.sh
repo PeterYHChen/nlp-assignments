@@ -11,3 +11,7 @@ java -cp maxent-3.0.0.jar:trove.jar:. MEtag CONLL_dev.enhanced MEModel response.
 
 # scoring
 python score.name.py
+
+# adjust name tag and score again
+java NameTagAdjuster response.name
+python score.name.py

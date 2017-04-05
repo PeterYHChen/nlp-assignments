@@ -12,6 +12,8 @@ import java.util.Map;
  * Created by yonghong on 3/7/17.
  */
 public class FeatureBuilder {
+    private static boolean training = false;
+
     public static void main (String[] args) throws IOException {
         if (args.length != 1) {
             System.err.println("PosTagger takes 1 arguments:  java FeatureBuilder training.pos-chunk-name");
@@ -47,6 +49,11 @@ public class FeatureBuilder {
             results.addAll(getFeatures(sentence));
         }
 
+        if (training) {
+            // add a list of common names with nameTag
+//            results.addAll(getCommonNameFeatures());
+        }
+
         // print results to file
         PrintWriter pw = null;
         try {
@@ -70,7 +77,7 @@ public class FeatureBuilder {
         List<String> chunkTags = new ArrayList<>();
         List<String> nameTags = new ArrayList<>();
 
-        boolean training = false;
+        training = false;
         for (int i = 0; i < sentence.size(); i++) {
             String[] fields = sentence.get(i).split("\t");
             if (fields.length >= 3) {
@@ -115,6 +122,22 @@ public class FeatureBuilder {
             }
 
             results.add(features.toString());
+        }
+        return results;
+    }
+
+    private static List<String> getCommonNameFeatures() throws IOException {
+        List<String> results = new ArrayList<>();
+        File nameFile = new File("names.txt");
+        List<String> lines = Files.readAllLines(nameFile.toPath(), StandardCharsets.UTF_8);
+
+        for (String line : lines) {
+            String[] fields = line.trim().split("\\s+");
+            if (fields.length > 0) {
+                String name = fields[0];
+                name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+                results.add(name + "\tI-PER");
+            }
         }
         return results;
     }
