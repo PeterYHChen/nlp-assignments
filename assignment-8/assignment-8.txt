@@ -1,0 +1,82 @@
+
+* Here are the 3 new patterns I found.
+
+    1) PERSON--prep:of:pobj--GPE = RESIDE
+        Two were freed in April, but the last hostage, Eugenio Vagni of Italy was freed only after six months in captivity.
+
+    2) PERSON--prep:from:pobj--GPE = RESIDE
+        Wayne A. Holst, formerly from Ontario but a proud Albertan for almost three decades, teaches at the University of Calgary and at St. David's United Church.
+
+    3) PERSON--nsubj-1:reside:prep:in:pobj--GPE = RESIDE
+        Mailer resided in Provincetown, Massachusetts, with his wife of 33 years, Norris Church Mailer, and maintained an apartment in Brooklyn, New York.
+
+
+* Here are a list of patterns I expand from the above patterns using ICE:
+
+    PERSON--amod-1:group:prep:in:pobj--GPE = RESIDE
+    PERSON--dobj-1:transfer:prep:to:pobj--GPE = RESIDE
+    PERSON--dobj-1:bear:prep:in:pobj--GPE = RESIDE
+    PERSON--nsubj-1:be:advmod:man:prep:from:pobj--GPE = RESIDE
+    PERSON--dobj-1:hold:prep:at:pobj:hospital:prep:in:pobj--GPE = RESIDE
+    PERSON--appos--GPE = RESIDE
+    PERSON--appos:head:prep:of:pobj:community:prep:in:pobj--GPE = RESIDE
+    PERSON--pobj-1:with:prep-1:meet:prep:in:pobj:town:nn--GPE = RESIDE
+    PERSON--pobj-1:by:agent-1:create:nsubj:vote:dep-1:leave:nsubj--GPE = RESIDE
+    PERSON--prep:of:pobj:department:poss--GPE = RESIDE
+    PERSON--pobj-1:as:prep-1:boy:prep:from:pobj--GPE = RESIDE
+    PERSON--dobj-1:arrest:prep:before:pcomp:send:prep:to:pobj--GPE = RESIDE
+    PERSON--nsubj-1:live:prep:in:pobj--GPE = RESIDE
+    PERSON--nsubj-1:be:cop:ambassador:prep:to:pobj--GPE = RESIDE
+    PERSON--prep:from:pobj--GPE = RESIDE
+    PERSON--dobj-1:arrest:prep:in:pobj--GPE = RESIDE
+    PERSON--pobj-1:with:prep-1:meet:prep:in:pobj--GPE = RESIDE
+    PERSON--appos-1:finalist:prep:from:pobj--GPE = RESIDE
+    PERSON--nsubj-1:be:ccomp-1:say:ccomp:live:prep:in:pobj--GPE = RESIDE
+    PERSON--nsubj-1:move:prep:to:pobj--GPE = RESIDE
+    PERSON--nsubj-1:spend:dobj:rest:prep:in:pobj--GPE = RESIDE
+    PERSON--nsubj-1:be:cop:ambassador:poss--GPE = RESIDE
+    PERSON--nsubj-1:return:prep:to:pobj:hometown:prep:of:pobj--GPE = RESIDE
+    PERSON--nsubj-1:reside:prep:in:pobj--GPE = RESIDE
+    PERSON--prep:of:pobj--GPE = RESIDE
+    PERSON--cop-1:be:ccomp-1:say:ccomp:live:prep:in:pobj--GPE = RESIDE
+
+* The relations extracted are as following:
+
+    Chiafari:RESIDE:Connecticut
+    Adela Dworin:RESIDE:Havana
+    Alan Gross:RESIDE:Potomac
+    Jewish:RESIDE:Cuba
+    Alan P. Gross:RESIDE:Potomac
+    George Sodini:RESIDE:Carnegie
+    George Sodini:RESIDE:Scott Township
+    Mailer:RESIDE:Provincetown
+    Mailer:RESIDE:Provincetown
+    Terry:RESIDE:Temecula
+    Graham:RESIDE:Yellowknife
+    Graham:RESIDE:Whitehorse
+    John:RESIDE:Vancouver
+    Graham:RESIDE:Vancouver
+    Graham:RESIDE:Canada
+    Graham:RESIDE:Whitehorse
+    Wayne A. Holst:RESIDE:Ontario
+    McCain:RESIDE:Arizona
+    Graham:RESIDE:South Carolina
+    Pauliina Miettinen:RESIDE:Finland
+    Nidal Hasan:RESIDE:San Antonio
+    Timo Kaukonen:RESIDE:Finland
+    Vladimir Ladyzhenskiy:RESIDE:Russia
+    Ruben:RESIDE:Tilburg
+    Rosen:RESIDE:Guam
+    Eloise Spooner:RESIDE:Iron City
+    Mark Stutzman:RESIDE:Mountain Lake
+    Esther-Ethy Mamane:RESIDE:Paris
+    Wen Qiang:RESIDE:Chongqing
+    Andrew E. Lange:RESIDE:Urbana
+    Andrew E. Lange:RESIDE:Urbana
+    Andrew E. Lange:RESIDE:Urbana
+    Eugenio Vagni:RESIDE:Italy
+    Eugenio Vagni:RESIDE:Italy
+    Dylan Avery:RESIDE:San Diego
+    Dylan Avery:RESIDE:California
+    Korey Rowe:RESIDE:Oneonta
+    Silsby:RESIDE:Boise
